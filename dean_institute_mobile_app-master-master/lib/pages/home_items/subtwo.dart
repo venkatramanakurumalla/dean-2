@@ -9,12 +9,15 @@ import "package:get/get.dart";
 import 'package:dean_institute_mobile_app/pages/course_details_page.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/tabtwo.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/all.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/dp.dart';
+
+
 
 
   
-void main() => runApp(MyApp());
+void main() => runApp(MyAppcc());
   
-class MyApp extends StatelessWidget {
+class MyAppcc extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -29,6 +32,7 @@ class User {
    var id;
   var category_id;
   var subcategory_name;
+ var childcategory_name;
   // final String subcategory_logo ;
   var slug;
   var order;
@@ -40,6 +44,8 @@ class User {
   User({
     required this.id,
     required this.subcategory_name,
+     required this.childcategory_name,
+
     required this.slug,
    // required this.subcategory_logo,
   });
@@ -55,7 +61,7 @@ class _HomePageState extends State<HomePage> {
   
   Future<List<User>> getRequest() async {
     //replace your restFull API here.
-    String url = "https://deaninstitute.fastrider.co/api/all-sub-category";
+    String url = "https://deaninstitute.fastrider.co/api/all-child-category";
     final response = await http.get(Uri.parse(url));
   
     var responseData = json.decode(response.body);
@@ -67,6 +73,8 @@ class _HomePageState extends State<HomePage> {
           id: singleUser["id"],
          // subcategory_logo: singleUser["subcategory_logo"],
         subcategory_name: singleUser["subcategory_name"],
+        childcategory_name: singleUser["childcategory_name"],
+
           slug: singleUser["slug"]);
   
       //Adding user to the list.
@@ -94,7 +102,8 @@ class _HomePageState extends State<HomePage> {
        // backgroundColor:Colors.red,
        // leading: Contain
        // er(),
-       title:Text("IT Courses",textAlign: TextAlign.center),
+        title:Text(Get.arguments),
+      // title:Text("IT Courses",textAlign: TextAlign.center),
       //  toolbarHeight: 163.h,
        // shape: RoundedRectangleBorder(
          //   borderRadius: BorderRadius.only(
@@ -136,27 +145,34 @@ class _HomePageState extends State<HomePage> {
         child: Column(
           children: [
             ListTile(
-              title: Text(snapshot.data[index].subcategory_name,textAlign: TextAlign.center,),
+              title: Text(snapshot.data[index].childcategory_name,textAlign: TextAlign.center,),
               subtitle: Text("Enroll now"),
             // trailing: Icon(Icons.favorite_outline),
              trailing: Icon(Icons.book_online),
               onTap: () {
                       if(index==0){
-                         Get.to(  HomeScreen(), );
+                        Get.to(CourseDetailss(),arguments:snapshot.data[index].childcategory_name,);
                       }
                       else if(index==1){
-                      //  Get.to(MyAll());
+                         Get.to(CourseDetailss(),arguments:snapshot.data[index].childcategory_name,);
+                        // Get.to(MyAppc(),arguments:characterList[index].category_name);
                       }
+                      //  Get.to(MyAll());
+                     // }
                       else if(index==2){
-                       Get.to( HomeScreen(),);
+                         Get.to(CourseDetailss(),arguments:snapshot.data[index].childcategory_name,);
+                      // Get.to( HomeScreen(),);
                       }
                        else if(index==3){
-                       Get.to(HomeScreen());
+                      // Get.to(HomeScreen());
+                       Get.to(CourseDetailss(),arguments:snapshot.data[index].childcategory_name,);
                       }
                        else if(index==4){
-                       Get.to( HomeScreen(),);
+                          Get.to(CourseDetailss(),arguments:snapshot.data[index].childcategory_name,);
+                     //  Get.to( HomeScreen(),);
                       }
                        else if(index==5){
+                          Get.to(CourseDetailss(),arguments:snapshot.data[index].childcategory_name,);
                       // Get.to(MyAll());
                       }
                  // ),

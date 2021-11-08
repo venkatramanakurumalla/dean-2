@@ -1,6 +1,8 @@
 
 import 'package:dean_institute_mobile_app/pages/home_items/courses_page.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/course_pageone.dart';
 import 'package:dean_institute_mobile_app/pages/home_items/sample_data.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/subone.dart';
 import 'package:dean_institute_mobile_app/widgets/course_list_item.dart';
 import 'package:dean_institute_mobile_app/widgets/dynamic_tabs.dart';
 import 'package:dean_institute_mobile_app/widgets/home_app_bar.dart';
@@ -12,6 +14,8 @@ import 'package:get/get.dart';
 import 'package:dean_institute_mobile_app/data/character_api.dart';
 import 'package:dean_institute_mobile_app/model/character.dart';
 import 'dart:convert';
+import 'package:dean_institute_mobile_app/pages/home_items/dp.dart';
+import 'package:dean_institute_mobile_app/pages/home_items/subtwo.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -104,22 +108,23 @@ dynamic email = Get.arguments;
                     title: Text(characterList[index].category_name),
                     onTap: () {
                       if(index==0){
-                         Get.to(MyApp());
+                        Get.to(MyAllit(),arguments:characterList[index].category_name);
                       }
                       else if(index==1){
-                        Get.to(MyApp());
+                        Get.to(MyAppcc(),arguments:characterList[index].category_name);
                       }
                       else if(index==2){
-                       Get.to(MyApp());
+                      // Get.to(MyAppcc(),arguments:characterList[index].category_name);
                       }
                        else if(index==3){
-                       Get.to(Home());
+                     //  Get.to(MyAppcc (),arguments:characterList[index].category_name);
                       }
                        else if(index==4){
-                       Get.to(Home());
+                      // Get.to(Home(),arguments:characterList[index].category_name);
                       }
+                       
                        else if(index==5){
-                       Get.to(Home());
+                     //  Get.to(Home());
                       }
                  // ),
                        }  );

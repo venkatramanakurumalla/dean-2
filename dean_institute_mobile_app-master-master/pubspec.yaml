@@ -41,6 +41,8 @@ dependencies:
   http: any
   flutter_secure_storage: ^4.2.1
   dio_http_cache: ^0.3.0
+  stripe_payment: ^1.1.1
+
   
  # connectivity: ^3.0.6
 
